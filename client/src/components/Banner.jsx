@@ -9,7 +9,7 @@ const Banner = () => {
                     Organize your tasks efficiently and stay productive with TaskSync.
                 </p>
                 <Link
-                    to="/signup"
+                    to="/tasks"
                     className="bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition"
                 >
                     Get Started
