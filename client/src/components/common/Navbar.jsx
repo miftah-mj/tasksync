@@ -61,10 +61,16 @@ const Navbar = () => {
                                                 Dashboard
                                             </Link> */}
                                             <Link
+                                                to="/add-task"
+                                                className="px-4 py-3 hover:bg-neutral-100 transition font-semibold"
+                                            >
+                                                Add Task
+                                            </Link>
+                                            <Link
                                                 to="/tasks"
                                                 className="px-4 py-3 hover:bg-neutral-100 transition font-semibold"
                                             >
-                                                Tasks
+                                                My Tasks
                                             </Link>
                                             <div
                                                 onClick={logOut}

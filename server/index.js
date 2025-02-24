@@ -55,7 +55,7 @@ const client = new MongoClient(uri, {
 });
 async function run() {
     try {
-        const db = client.db("insightArc");
+        const db = client.db("taskSync");
         const usersCollection = db.collection("users");
         const tasksCollection = db.collection("tasks");
 
@@ -106,6 +106,28 @@ async function run() {
          *
          */
 
+        // Get all users data
+        app.get("/all-users", async (req, res) => {
+            const users = await usersCollection.find().toArray();
+            res.send(users);
+        });
+
+        // Get all users data except the current user
+        app.get("/all-users/:email", verifyToken, async (req, res) => {
+            const email = req.params.email;
+            const query = { email: { $ne: email } };
+            const users = await usersCollection.find(query).toArray();
+            res.send(users);
+        });
+
+        // Get user data by email
+        app.get("/users/:email", async (req, res) => {
+            const email = req.params.email;
+            const query = { email };
+            const user = await usersCollection.findOne(query);
+            res.send(user);
+        });
+
         // Save or update user data in the database
         app.post("/users/:email", async (req, res) => {
             const email = req.params.email;
@@ -139,9 +161,9 @@ async function run() {
 run().catch(console.dir);
 
 app.get("/", (req, res) => {
-    res.send("Welcome to InsightArc Server.....😊📰");
+    res.send("Welcome to TaskSync Server.....😊📰");
 });
 
 app.listen(port, () => {
-    console.log(`InsightArc is running on port ${port}`);
+    console.log(`TaskSync is running on port ${port}`);
 });

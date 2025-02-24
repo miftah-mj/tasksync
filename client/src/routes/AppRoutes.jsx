@@ -5,6 +5,7 @@ import NotFound from "../pages/NotFound";
 import Login from "../pages/Auth/Login";
 import SignUp from "../pages/Auth/SignUp";
 import Tasks from "../pages/tasks/Tasks";
+import AddTask from "../pages/tasks/AddTask";
 
 function AppRoutes() {
     return (
@@ -14,6 +15,7 @@ function AppRoutes() {
                 <Route path="login" element={<Login />} />
                 <Route path="signup" element={<SignUp />} />
                 <Route path="tasks" element={<Tasks />} />
+                <Route path="add-task" element={<AddTask />} />
                 <Route path="*" element={<NotFound />} />
             </Route>
         </Routes>
